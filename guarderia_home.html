@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pequeños Pasos — Guardería</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="guarderia_home.css">
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- ── MODAL LOGIN ──────────────────────────────────────────────── -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-icon">👩‍🏫</div>
+    <h2>Área de Docentes</h2>
+    <p>Ingresa tus credenciales para acceder al sistema de registro</p>
+    <div class="modal-field">
+      <label>Usuario</label>
+      <input type="text" placeholder="Tu nombre de usuario" id="loginUser">
+    </div>
+    <div class="modal-field">
+      <label>Contraseña</label>
+      <input type="password" placeholder="••••••••" id="loginPass">
+    </div>
+    <button class="btn-login" onclick="handleLogin()">Ingresar al Sistema →</button>
+    <p class="login-hint">¿Problemas para acceder? Contacta a la administración.</p>
+  </div>
+</div>
+
+<!-- ── NAV ──────────────────────────────────────────────────────── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo"><span>🌸</span> Pequeños Pasos</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#horarios">Tarifas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#" class="btn-staff" onclick="openModal(event)">🔐 Acceso Docentes</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="shape" style="width:300px;height:300px;background:#FFD6E7;top:-80px;right:30%;animation-duration:7s;"></div>
+  <div class="shape" style="width:180px;height:180px;background:#D4F1EE;bottom:10%;left:5%;animation-duration:9s;animation-delay:2s;"></div>
+  <div class="shape" style="width:120px;height:120px;background:#FFF3CD;top:20%;left:40%;animation-duration:6s;animation-delay:1s;"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">🌟 Bienvenidos a nuestra guardería</div>
+    <h1 class="hero-title">
+      Un lugar donde<br>
+      cada sonrisa<br>
+      cuenta
+    </h1>
+    <p class="hero-text">
+      Cuidamos y estimulamos a tus hijos en un ambiente seguro, lleno de amor y aprendizaje. Porque los primeros años son los más importantes.
+    </p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn-primary">Contáctanos 💬</a>
+      <a href="#servicios" class="btn-secondary">Ver servicios →</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-float gallery-colors">
+      <div class="emoji-grid">
+        <div class="emoji-item">🎨</div>
+        <div class="emoji-item">📚</div>
+        <div class="emoji-item">🎵</div>
+        <div class="emoji-item">🌱</div>
+        <div class="emoji-item">🧩</div>
+        <div class="emoji-item">🎭</div>
+        <div class="emoji-item">⚽</div>
+        <div class="emoji-item">🍎</div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">+80</div><div class="stat-lbl">Niños felices</div></div>
+        <div class="stat"><div class="stat-num">12</div><div class="stat-lbl">Docentes</div></div>
+        <div class="stat"><div class="stat-num">10+</div><div class="stat-lbl">Años de exp.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wave">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#ffffff"/>
+  </svg>
+</div>
+
+<!-- ── SERVICIOS ─────────────────────────────────────────────────── -->
+<section id="servicios">
+  <div class="section-header center reveal">
+    <div class="section-label">Lo que ofrecemos</div>
+    <h2 class="section-title">Servicios pensados para ellos 💛</h2>
+    <p class="section-sub">Cada actividad está diseñada para potenciar el desarrollo físico, emocional e intelectual de tu hijo.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon" style="background:#FFE4EC">🎨</div>
+      <h3>Arte y Creatividad</h3>
+      <p>Talleres de pintura, manualidades y expresión artística que desarrollan la imaginación y motricidad fina.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon" style="background:#E4F8EC">🌱</div>
+      <h3>Estimulación Temprana</h3>
+      <p>Programas especializados para potenciar el desarrollo cognitivo y sensorial desde los primeros meses.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon" style="background:#E4EEFF">🎵</div>
+      <h3>Música y Movimiento</h3>
+      <p>Ritmo, canciones y danza para desarrollar el lenguaje, la coordinación y la inteligencia emocional.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon" style="background:#FFF4E4">🍎</div>
+      <h3>Alimentación Sana</h3>
+      <p>Menú balanceado y nutritivo, adaptado a cada etapa del crecimiento, preparado con amor cada día.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon" style="background:#F4E4FF">📚</div>
+      <h3>Pre-lectura y Números</h3>
+      <p>Introducción al mundo de las letras y los números a través del juego, el cuento y la exploración.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon" style="background:#E4FFF8">⚽</div>
+      <h3>Deporte y Juego Libre</h3>
+      <p>Espacios seguros para el juego activo al aire libre, favoreciendo la socialización y el desarrollo físico.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wave">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,20 C480,60 960,0 1440,30 L1440,0 L0,0 Z" fill="#ffffff"/>
+    <path d="M0,20 C480,60 960,0 1440,30 L1440,60 L0,60 Z" fill="#F5E6EE"/>
+  </svg>
+</div>
+
+<!-- ── GALERÍA ────────────────────────────────────────────────────── -->
+<section id="galeria" style="background:var(--light)">
+  <div class="section-header center reveal">
+    <div class="section-label">Nuestra guardería</div>
+    <h2 class="section-title">Un espacio lleno de vida 🌈</h2>
+    <p class="section-sub">Instalaciones diseñadas para que los niños exploren, aprendan y se diviertan en total seguridad.</p>
+  </div>
+  <div class="gallery-grid gallery-colors reveal">
+    <div class="gallery-item big">
+      <span>🎨</span>
+      <div class="overlay"><span>Sala de Arte y Creatividad</span></div>
+    </div>
+    <div class="gallery-item">
+      <span>📚</span>
+      <div class="overlay"><span>Biblioteca Infantil</span></div>
+    </div>
+    <div class="gallery-item">
+      <span>🌿</span>
+      <div class="overlay"><span>Jardín y Zona Verde</span></div>
+    </div>
+    <div class="gallery-item">
+      <span>🧩</span>
+      <div class="overlay"><span>Sala de Juegos</span></div>
+    </div>
+    <div class="gallery-item big">
+      <span>🍎</span>
+      <div class="overlay"><span>Comedor y Nutrición</span></div>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:28px;font-size:0.85rem;color:var(--mid);font-style:italic;">
+    * Reemplaza los emojis con fotos reales de tu guardería
+  </p>
+</section>
+
+<div class="wave">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:60px">
+    <path d="M0,30 C360,60 1080,0 1440,40 L1440,60 L0,60 Z" fill="#ffffff"/>
+    <path d="M0,30 C360,60 1080,0 1440,40 L1440,0 L0,0 Z" fill="#F5E6EE"/>
+  </svg>
+</div>
+
+<!-- ── HORARIOS Y TARIFAS ─────────────────────────────────────────── -->
+<section id="horarios">
+  <div class="section-header center reveal">
+    <div class="section-label">Planes y Horarios</div>
+    <h2 class="section-title">Encuentra el plan perfecto ⏰</h2>
+    <p class="section-sub">Opciones flexibles que se adaptan a los horarios de tu familia.</p>
+  </div>
+  <div class="plans-grid">
+    <div class="plan-card reveal">
+      <div class="plan-icon">🌅</div>
+      <div class="plan-name">Medio Día</div>
+      <div class="plan-hours">7:00 AM – 12:00 PM</div>
+      <div class="plan-price">$350<span>K</span></div>
+      <div class="plan-period">por mes</div>
+      <ul class="plan-features">
+        <li>Estimulación temprana</li>
+        <li>Refrigerio incluido</li>
+        <li>Actividades artísticas</li>
+        <li>Informe mensual</li>
+      </ul>
+    </div>
+    <div class="plan-card featured reveal">
+      <div class="plan-badge">⭐ Más popular</div>
+      <div class="plan-icon">☀️</div>
+      <div class="plan-name">Día Completo</div>
+      <div class="plan-hours">7:00 AM – 5:00 PM</div>
+      <div class="plan-price">$580<span>K</span></div>
+      <div class="plan-period">por mes</div>
+      <ul class="plan-features">
+        <li>Todo del plan Medio Día</li>
+        <li>Almuerzo nutritivo</li>
+        <li>Siesta y descanso</li>
+        <li>Actividades deportivas</li>
+        <li>Informe semanal</li>
+      </ul>
+    </div>
+    <div class="plan-card reveal">
+      <div class="plan-icon">🌙</div>
+      <div class="plan-name">Tarde</div>
+      <div class="plan-hours">1:00 PM – 6:00 PM</div>
+      <div class="plan-price">$320<span>K</span></div>
+      <div class="plan-period">por mes</div>
+      <ul class="plan-features">
+        <li>Refuerzo escolar</li>
+        <li>Merienda incluida</li>
+        <li>Juego libre</li>
+        <li>Informe mensual</li>
+      </ul>
+    </div>
+  </div>
+  <div class="schedule-row reveal">
+    <div class="sched-item">
+      <div class="sched-day">Lunes a Viernes</div>
+      <div class="sched-time">7:00 AM – 6:00 PM</div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-day">Sábados</div>
+      <div class="sched-time">8:00 AM – 1:00 PM</div>
+    </div>
+    <div class="sched-item">
+      <div class="sched-day">Domingos</div>
+      <div class="sched-time">Cerrado</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACTO ───────────────────────────────────────────────────── -->
+<section id="contacto">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-label">Estamos aquí</div>
+      <h2 class="section-title">¿Tienes preguntas? Escríbenos 💬</h2>
+      <p class="section-sub">Nos encantaría conocerte y contarte todo sobre nuestra guardería. ¡El primer mes es con descuento!</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><h4>Dirección</h4><p>Calle 45 #23-10, Medellín, Antioquia</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><h4>Teléfono</h4><p>+57 311 234 5678</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div><h4>Correo</h4><p>hola@pequenospasos.com.co</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div><h4>WhatsApp</h4><p>+57 311 234 5678</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <h3>Solicitar información 🌸</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" placeholder="Cel / WhatsApp">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="tu@correo.com">
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea placeholder="Cuéntanos sobre tu hijo/a, edad, horario que necesitas..."></textarea>
+      </div>
+      <button class="btn-contact" onclick="sendContact()">Enviar mensaje ✉️</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+<footer>
+  <p>© 2026 <strong>Pequeños Pasos</strong> — Guardería. Hecho con 🌸 para las familias.</p>
+</footer>
+
+<script src="guarderia_home.js"></script>
+</body>
+</html>

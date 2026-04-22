@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌸 Guardería — Registro</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose:       #FF4081;
+    --rose-dark:  #C2185B;
+    --rose-light: #FCE4EC;
+    --rose-soft:  #F8BBD9;
+    --peach:      #FFAB91;
+    --sky:        #B3E5FC;
+    --mint:       #B2DFDB;
+    --lemon:      #FFF9C4;
+    --white:      #FFFFFF;
+    --cream:      #FFF8FB;
+    --text:       #3D0026;
+    --text-mid:   #880E4F;
+    --text-light: #AD1457;
+    --shadow:     rgba(194,24,91,0.15);
+    --radius:     18px;
+    --radius-sm:  10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    padding: 0 0 60px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Fondo decorativo */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(circle at 10% 20%, #FFE4EC 0%, transparent 45%),
+      radial-gradient(circle at 90% 10%, #E8F5FF 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, #FFF0F5 0%, transparent 50%),
+      radial-gradient(circle at 20% 90%, #F0FFF4 0%, transparent 40%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Burbujas flotantes */
+  .bubble {
+    position: fixed;
+    border-radius: 50%;
+    opacity: 0.18;
+    animation: float linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes float {
+    0%   { transform: translateY(110vh) scale(0.8); opacity: 0; }
+    10%  { opacity: 0.18; }
+    90%  { opacity: 0.18; }
+    100% { transform: translateY(-10vh) scale(1.1); opacity: 0; }
+  }
+
+  .wrapper {
+    position: relative; z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────────────────────────── */
+  header {
+    text-align: center;
+    padding: 48px 0 32px;
+  }
+
+  .logo-ring {
+    width: 88px; height: 88px;
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 40px;
+    box-shadow: 0 8px 32px var(--shadow), 0 0 0 6px var(--rose-soft);
+    animation: pulse-ring 3s ease-in-out infinite;
+  }
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 8px 32px var(--shadow), 0 0 0 6px var(--rose-soft); }
+    50%       { box-shadow: 0 8px 40px rgba(194,24,91,0.28), 0 0 0 12px #FFDDE8; }
+  }
+
+  header h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2.1rem; font-weight: 700;
+    color: var(--rose-dark);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+  header p {
+    font-size: 0.95rem; color: var(--text-light);
+    margin-top: 8px; font-weight: 600;
+  }
+
+  /* ── CARD ────────────────────────────────────────────────────────────────── */
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 24px var(--shadow);
+    border: 1.5px solid #FFD6E7;
+    animation: slide-up 0.5s ease both;
+  }
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .card:nth-child(1) { animation-delay: 0.05s; }
+  .card:nth-child(2) { animation-delay: 0.12s; }
+  .card:nth-child(3) { animation-delay: 0.19s; }
+  .card:nth-child(4) { animation-delay: 0.26s; }
+
+  .card-title {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.82rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--rose);
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px dashed var(--rose-soft);
+  }
+  .card-title span.icon {
+    width: 32px; height: 32px;
+    background: var(--rose-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+
+  /* ── GRID ────────────────────────────────────────────────────────────────── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .span-2 { grid-column: span 2; }
+  @media (max-width: 560px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .span-2 { grid-column: span 1; }
+  }
+
+  /* ── CAMPOS ──────────────────────────────────────────────────────────────── */
+  .field { display: flex; flex-direction: column; gap: 6px; }
+
+  label {
+    font-size: 0.78rem; font-weight: 800;
+    color: var(--text-mid);
+    text-transform: uppercase; letter-spacing: 0.8px;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #FFD6E7;
+    border-radius: var(--radius-sm);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.97rem; font-weight: 600;
+    color: var(--text);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--rose);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255,64,129,0.1);
+  }
+  input::placeholder { color: #FFAAC8; font-weight: 500; }
+  textarea { resize: vertical; min-height: 72px; }
+  select { cursor: pointer; }
+
+  /* ── BOTONES ─────────────────────────────────────────────────────────────── */
+  .btns {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px; margin-top: 8px;
+  }
+  @media (max-width: 480px) { .btns { grid-template-columns: 1fr; } }
+
+  .btn {
+    padding: 15px 20px;
+    border: none; border-radius: var(--radius-sm);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    letter-spacing: 0.3px;
+  }
+  .btn:hover  { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-save {
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    color: white;
+    box-shadow: 0 6px 20px rgba(194,24,91,0.35);
+  }
+  .btn-save:hover { box-shadow: 0 8px 28px rgba(194,24,91,0.45); }
+
+  .btn-clear {
+    background: white;
+    color: var(--rose-dark);
+    border: 2px solid var(--rose-soft);
+    box-shadow: 0 4px 14px var(--shadow);
+  }
+  .btn-clear:hover { border-color: var(--rose); }
+
+  /* ── TOAST ───────────────────────────────────────────────────────────────── */
+  #toast {
+    position: fixed; bottom: 28px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: linear-gradient(135deg, #2E7D32, #1B5E20);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-weight: 700; font-size: 0.95rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
+    z-index: 9999; white-space: nowrap;
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+  #toast.error { background: linear-gradient(135deg, #C62828, #B71C1C); }
+
+  /* ── SPINNER ─────────────────────────────────────────────────────────────── */
+  .spinner {
+    width: 18px; height: 18px;
+    border: 3px solid rgba(255,255,255,0.4);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── INSTRUCCIONES ───────────────────────────────────────────────────────── */
+  .info-box {
+    background: var(--lemon);
+    border: 1.5px solid #F9A825;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    font-size: 0.88rem;
+    color: #4E342E;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .info-box strong { color: #E65100; }
+  .info-box code {
+    background: rgba(0,0,0,0.08);
+    padding: 2px 7px; border-radius: 5px;
+    font-family: monospace; font-size: 0.85rem;
+  }
+
+  /* ── REQUIRED ────────────────────────────────────────────────────────────── */
+  label.required::after {
+    content: ' *'; color: var(--rose); font-size: 0.85em;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────────────────────────── */
+  footer {
+    text-align: center; padding: 32px 0 0;
+    font-size: 0.8rem; color: #AD1457;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- Burbujas decorativas -->
+<script>
+  const colors = ['#FF80AB','#F48FB1','#B3E5FC','#C8E6C9','#FFF9C4','#FFCCBC'];
+  for (let i = 0; i < 14; i++) {
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    const size = 20 + Math.random() * 60;
+    b.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${8+Math.random()*14}s;
+      animation-delay:${Math.random()*10}s;
+    `;
+    document.body.appendChild(b);
+  }
+</script>
+
+<div class="wrapper">
+
+  <header>
+    <div class="logo-ring">🌸</div>
+    <h1>Registro de Niños y Niñas</h1>
+    <p>Guardería — Sistema de inscripción</p>
+  </header>
+
+  <!-- Cómo conectar -->
+  <div class="info-box">
+    <strong>⚙️ Antes de usar:</strong> debes conectar esta app a tu Google Sheet.<br>
+    1. Abre tu Google Sheet → <strong>Extensiones → Apps Script</strong><br>
+    2. Pega el código del archivo <code>apps_script.js</code> que se descarga junto con esta app.<br>
+    3. Despliégalo como <strong>Web App</strong> y copia la URL.<br>
+    4. Pégala en el campo <code>SCRIPT_URL</code> dentro de este HTML (línea marcada).
+  </div>
+
+  <form id="form" novalidate>
+
+    <!-- DATOS DEL NIÑO -->
+    <div class="card">
+      <div class="card-title"><span class="icon">👶</span> Datos del Niño / Niña</div>
+      <div class="grid-2">
+        <div class="field">
+          <label class="required" for="nombres">Nombre(s)</label>
+          <input id="nombres" name="nombres" type="text" placeholder="Ej: Sofía Valentina" required>
+        </div>
+        <div class="field">
+          <label class="required" for="apellidos">Apellidos</label>
+          <input id="apellidos" name="apellidos" type="text" placeholder="Ej: Ramírez López" required>
+        </div>
+        <div class="field">
+          <label for="nacimiento">Fecha de Nacimiento</label>
+          <input id="nacimiento" name="nacimiento" type="date">
+        </div>
+        <div class="field">
+          <label for="edad">Edad</label>
+          <input id="edad" name="edad" type="text" placeholder="Ej: 3 años" readonly style="background:#FFF0F5;">
+        </div>
+      </div>
+    </div>
+
+    <!-- DATOS DEL ACUDIENTE -->
+    <div class="card">
+      <div class="card-title"><span class="icon">👨‍👩‍👧</span> Datos del Acudiente</div>
+      <div class="grid-2">
+        <div class="field">
+          <label class="required" for="acudiente">Nombre del Acudiente</label>
+          <input id="acudiente" name="acudiente" type="text" placeholder="Nombre completo" required>
+        </div>
+        <div class="field">
+          <label for="parentesco">Parentesco</label>
+          <select id="parentesco" name="parentesco">
+            <option value="">Seleccionar...</option>
+            <option>Mamá</option><option>Papá</option>
+            <option>Abuelo/a</option><option>Tío/a</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="tel" placeholder="Ej: 3112345678">
+        </div>
+        <div class="field">
+          <label for="correo">Correo Electrónico</label>
+          <input id="correo" name="correo" type="email" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="field span-2">
+          <label for="direccion">Dirección</label>
+          <input id="direccion" name="direccion" type="text" placeholder="Calle, barrio, ciudad">
+        </div>
+      </div>
+    </div>
+
+    <!-- INFORMACIÓN ACADÉMICA -->
+    <div class="card">
+      <div class="card-title"><span class="icon">📚</span> Información Académica</div>
+      <div class="grid-3">
+        <div class="field">
+          <label for="salon">Grupo / Salón</label>
+          <select id="salon" name="salon">
+            <option value="">Seleccionar...</option>
+            <option>Estrellitas</option><option>Mariposas</option>
+            <option>Girasoles</option><option>Arcoíris</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="curso">Curso</label>
+          <select id="curso" name="curso">
+            <option value="">Seleccionar...</option>
+            <option>Sala Cuna</option><option>Jardín</option>
+            <option>Pre-Kínder</option><option>Kínder</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="profesora">Profesora</label>
+          <input id="profesora" name="profesora" type="text" placeholder="Nombre de la docente">
+        </div>
+        <div class="field span-2">
+          <label for="materia">Materia / Área</label>
+          <input id="materia" name="materia" type="text" placeholder="Ej: Estimulación temprana">
+        </div>
+        <div class="field">
+          <label for="estado">Estado</label>
+          <select id="estado" name="estado">
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+            <option value="Retirado">Retirado</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- HORARIO -->
+    <div class="card">
+      <div class="card-title"><span class="icon">🕐</span> Horario</div>
+      <div class="grid-3">
+        <div class="field">
+          <label for="entrada">Hora de Entrada</label>
+          <input id="entrada" name="entrada" type="time">
+        </div>
+        <div class="field">
+          <label for="salida">Hora de Salida</label>
+          <input id="salida" name="salida" type="time">
+        </div>
+        <div class="field">
+          <label for="dias">Días de Asistencia</label>
+          <select id="dias" name="dias">
+            <option>Lunes a Viernes</option>
+            <option>Lunes, Miércoles, Viernes</option>
+            <option>Martes y Jueves</option>
+            <option>Personalizado</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTONES -->
+    <div class="btns">
+      <button type="submit" class="btn btn-save" id="btnSave">
+        <span id="btnIcon">✅</span>
+        <span id="btnText">Guardar Registro</span>
+        <div class="spinner" id="spinner"></div>
+      </button>
+      <button type="button" class="btn btn-clear" onclick="limpiar()">
+        🗑️ Limpiar Campos
+      </button>
+    </div>
+
+  </form>
+
+  <footer>🌸 Guardería — App de Registro &nbsp;·&nbsp; Hecho con ♥</footer>
+</div>
+
+<div id="toast">✅ ¡Registro guardado!</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════════
+// 🔧 CONFIGURACIÓN — pega aquí la URL de tu Apps Script Web App
+// ══════════════════════════════════════════════════════════════════════════════
+const SCRIPT_URL = "PEGA_TU_URL_AQUI";
+
+// ── Calcular edad automáticamente ─────────────────────────────────────────────
+document.getElementById('nacimiento').addEventListener('change', function() {
+  const dob = new Date(this.value);
+  if (isNaN(dob)) return;
+  const hoy = new Date();
+  let años = hoy.getFullYear() - dob.getFullYear();
+  let meses = hoy.getMonth() - dob.getMonth();
+  if (meses < 0 || (meses === 0 && hoy.getDate() < dob.getDate())) {
+    años--; meses = (meses + 12) % 12;
+  }
+  document.getElementById('edad').value =
+    años > 0 ? `${años} año${años > 1 ? 's' : ''}${meses > 0 ? ` y ${meses} mes${meses > 1 ? 'es' : ''}` : ''}` : `${meses} mes${meses !== 1 ? 'es' : ''}`;
+});
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+function toast(msg, error=false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = error ? 'error show' : 'show';
+  setTimeout(() => t.className = error ? 'error' : '', 3500);
+}
+
+// ── Limpiar ───────────────────────────────────────────────────────────────────
+function limpiar() {
+  document.getElementById('form').reset();
+  document.getElementById('edad').value = '';
+  toast('🗑️ Formulario limpiado');
+}
+
+// ── Enviar datos ──────────────────────────────────────────────────────────────
+document.getElementById('form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const nombres = document.getElementById('nombres').value.trim();
+  const acudiente = document.getElementById('acudiente').value.trim();
+  if (!nombres || !acudiente) {
+    toast('⚠️ Nombre del niño/a y acudiente son obligatorios', true);
+    return;
+  }
+
+  // Formato hora
+  function fmtTime(t) {
+    if (!t) return '';
+    const [h, m] = t.split(':');
+    const hr = parseInt(h);
+    return `${hr > 12 ? hr-12 : hr || 12}:${m} ${hr >= 12 ? 'PM' : 'AM'}`;
+  }
+
+  const datos = {
+    nombres,
+    apellidos:   document.getElementById('apellidos').value,
+    nacimiento:  document.getElementById('nacimiento').value,
+    edad:        document.getElementById('edad').value,
+    acudiente,
+    parentesco:  document.getElementById('parentesco').value,
+    telefono:    document.getElementById('telefono').value,
+    correo:      document.getElementById('correo').value,
+    direccion:   document.getElementById('direccion').value,
+    salon:       document.getElementById('salon').value,
+    curso:       document.getElementById('curso').value,
+    profesora:   document.getElementById('profesora').value,
+    materia:     document.getElementById('materia').value,
+    estado:      document.getElementById('estado').value,
+    entrada:     fmtTime(document.getElementById('entrada').value),
+    salida:      fmtTime(document.getElementById('salida').value),
+    dias:        document.getElementById('dias').value,
+    fechaRegistro: new Date().toLocaleDateString('es-CO', {day:'2-digit',month:'2-digit',year:'numeric'})
+  };
+
+  // UI cargando
+  const btn = document.getElementById('btnSave');
+  const sp  = document.getElementById('spinner');
+  const ic  = document.getElementById('btnIcon');
+  const tx  = document.getElementById('btnText');
+  btn.disabled = true; sp.style.display = 'block'; ic.style.display = 'none'; tx.textContent = 'Guardando...';
+
+  if (SCRIPT_URL === "PEGA_TU_URL_AQUI") {
+    // DEMO: sin conexión real
+    await new Promise(r => setTimeout(r, 1200));
+    toast(`🌸 ¡${datos.nombres} registrado/a exitosamente! (modo demo)`);
+    limpiar();
+  } else {
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
+      });
+      toast(`🌸 ¡${datos.nombres} registrado/a exitosamente!`);
+      limpiar();
+    } catch (err) {
+      toast('❌ Error al conectar. Revisa la URL del script.', true);
+    }
+  }
+
+  btn.disabled = false; sp.style.display = 'none'; ic.style.display = 'block'; tx.textContent = 'Guardar Registro';
+});
+</script>
+</body>
+</html>
